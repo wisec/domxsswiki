@@ -6,7 +6,13 @@ DOM Xss Test Cases Wiki Project
 
 = Details =
 
-== Glossary ==
+== Sources ==
+
+|| *Input* || *Source* ||*browser* || *output* ||
+|| http://host/page.ext?a< b>"'`="'`<a>rwar#?"'<+assss   || location || Chrome || http:// host/page.ext?test=123%22'%3Ca%3Erwar#?"'`<assss ||
+
+
+= Glossary =
 
 *Source:*
 an input that could be controlled by an external (untrusted) source.
