@@ -8,8 +8,29 @@ DOM Xss Test Cases Wiki Project
 
 == Sources ==
 
-|| *Input* || *Source* ||*browser* || *output* ||
-|| http://host/page.ext?a< b>"'`="'`<a>rwar#?"'<+assss   || location || Chrome || http:// host/page.ext?test=123%22'%3Ca%3Erwar#?"'`<assss ||
+=== location/URI/URL ===
+
+Considering the classic url format:
+scheme://user:pass@host/path/to/page.ext/Pathinfo?search.location=value#hash=value&hash2=value2
+
+the following table shows how direct call of
+ * location
+ * location.href
+ * location.search
+ * location.hash
+are natively treated:
+
+|| *Input* || *Source* ||*browser* || version || *output* ||
+|| http://host/page.ext/?a< b>"'`="'`<a>rwar#?"'<+assss   || location || Chrome ||  || http:// host/page.ext?test=123%22'%3Ca%3Erwar#?"'`<assss ||
+
+=== cookie ===
+
+
+
+=== referrer ===
+
+=== name === 
+
 
 
 = Glossary =
