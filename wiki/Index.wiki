@@ -31,15 +31,24 @@ the following table shows how direct call of
 are natively treated:
 
 || *Source* || *browser* || *version* || *output* ||
-|| location ||   IE 8     ||  8       ||     http://host/path/to/page.ext/%3Ca%3Eaaa'%22=%0a;test%3Ca%22'%0A%60=%20%3E?test%3Ca%22'%0A`=%20%3Eaaa%22'%0A`#test<a"'%0A`=%20<aa"'%0A`     ||
-|| location.href ||   IE 8     ||  8       ||    http://host/path/to/page.ext/%3Ca%3Eaaa'%22=%0a;test%3Ca%22'%0A%60=%20%3E?test%3Ca%22'%0A`=%20%3Eaaa%22'%0A`#test<a"'%0A`=%20<aa"'%0A`      ||
-|| location.search ||   IE 8     ||  8       ||    ?test%3Ca%22'%0A`=%20%3Eaaa%22'%0A`      ||
-|| location.hash ||   IE 8     ||  8       ||     #test<a"'%0A`=%20<aa"'%0A`     ||
-|| location.pathname ||   IE 8     ||  8       ||      /path/to/page.ext/%3Ca%3Eaaa'%22=%0a;test%3Ca%22'%0A%60=%20%3E    ||
-|| document.URL ||   IE 8     ||  8       ||    http://host/path/to/page.ext/%3Ca%3Eaaa'%22=%0a;test%3Ca%22'%0A%60=%20%3E?test%3Ca%22'%0A`=%20%3Eaaa%22'%0A`#test<a"'%0A`=%20<aa"'%0A`      ||
+|| location ||   IE 8     ||  8       ||     http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test<a"'%0A=%20+%20>;#test<a"'%0A=%20+%20>;      ||
+|| location.href ||   IE 8     ||  8       ||    http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test<a"'%0A=%20+%20>;#test<a"'%0A=%20+%20>;   ||
+|| location.search ||   IE 8     ||  8       ||    ?test<a"'%0A=%20+%20>;    ||
+|| location.hash ||   IE 8     ||  8       ||     #test<a"'%0A=%20+%20>;    ||
+|| location.pathname ||   IE 8     ||  8       ||       /path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E   ||
+|| document.URL ||   IE 8     ||  8       ||     http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test<a"'%0A=%20+%20>;#test<a"'%0A=%20+%20>; ||
 || document.documentURI ||   IE 8     ||  8       ||     undefined     ||
-|| document.URLUnencoded ||   IE 8     ||  8       ||    http://host/path/to/page.ext/test%3Ca%22'%0A%60=%20+%20%3E;test%3Ca%22'%0A%60=%20+%20%3E;?test<a"'%0A`=%20+%20>;#test<a"'%0A`=%20+%20>;    ||
+|| document.URLUnencoded ||   IE 8     ||  8       ||     http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test<a"'%0A=%20+%20>;#test<a"'%0A=%20+%20>;  ||
 || document.baseURI ||   IE 8     ||  8       ||     undefined     ||
+|| location ||   Opera     ||  10.61       ||     http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test%3Ca%22'%0A=%20+%20%3E;#test<a"'%0A= +%20>;    ||
+|| location.href ||     Opera     ||  10.61       ||  http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test%3Ca%22'%0A=%20+%20%3E;#test<a"'%0A= +%20>;    ||
+|| location.search ||    Opera     ||  10.61        ||  ?test%3Ca%22'%0A=%20+%20%3E;    ||
+|| location.hash ||     Opera     ||  10.61       ||     #test<a"'%0A= +%20>;   ||
+|| location.pathname ||    Opera     ||  10.61        ||   /path/to/page.ext/test<a"'%0A= + >;test<a"'%0A= + > ||
+|| document.URL ||    Opera     ||  10.61     ||  http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test%3Ca%22'%0A=%20+%20%3E;#test<a"'%0A= +%20>;   ||
+|| document.documentURI ||    Opera     ||  10.61        ||     http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test%3Ca%22'%0A=%20+%20%3E;      ||
+|| document.URLUnencoded ||   Opera     ||  10.61         ||  undefined    ||
+|| document.baseURI ||     Opera     ||  10.61         ||     http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test%3Ca%22'%0A=%20+%20%3E;      ||
 
 
 === Cookie ===
