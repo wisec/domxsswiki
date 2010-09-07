@@ -41,3 +41,6 @@ an input that could be controlled by an external (untrusted) source.
 *Sink:*
 a sink is a potentially dangerous method that could lead to a vulnerability.
 In this case a DOM Based Xss.
+
+= References =
+[http://www.webappsec.org/projects/articles/071105.shtml "DOM Based Cross Site Scripting or XSS of the Third Kind"] A. Klein 2005, 
