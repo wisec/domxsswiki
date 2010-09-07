@@ -46,8 +46,8 @@ are natively treated:
 || document.documentURI ||   IE 8     ||  8       ||     undefined     ||
 || document.documentURI ||    Opera     ||  10.61        ||     http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test%3Ca%22'%0A=%20+%20%3E;      ||
 || document.URLUnencoded ||   IE 8     ||  8       ||     http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test<a"'%0A=%20+%20>;#test<a"'%0A=%20+%20>;  ||
-|| document.baseURI ||   IE 8     ||  8       ||     undefined     ||
 || document.URLUnencoded ||   Opera     ||  10.61         ||  undefined    ||
+|| document.baseURI ||   IE 8     ||  8       ||     undefined     ||
 || document.baseURI ||     Opera     ||  10.61         ||     http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test%3Ca%22'%0A=%20+%20%3E;      ||
 
 
