@@ -48,7 +48,7 @@ The following table shows how direct call of
  * opener (IE <= 7 Only)
  * parent.obj
  * top.obj
- * frames[i].obj
+ * frames`[`i`]`.obj
  * event.data of onmessage event for postMessage method
 
 = Glossary =
