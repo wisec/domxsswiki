@@ -78,6 +78,12 @@ are natively treated:
 The following table shows how direct call of
  * document.referrer
 
+|| *Source* || *browser* || *version* || *output* ||
+|| document.referrer ||     IE 8     ||  8        ||   http://host/path/to/page.ext/<font color="red">test%3Ca%22%27%0A%60=%20+%20%3E;test%3Ca%22%27%0A%60=%20+%20%3E</font><font color="green">?test%3Ca%22%27%0A%60=%20+%20%3E;</font>    ||
+|| document.referrer ||     Firefox    ||  3.6.8        ||   http://host/path/to/page.ext/<font color="red">test%3Ca%22'%0A%60=%20+%20%3E;test%3Ca%22'%0A%60=%20+%20%3E</font><font color="green">?test<a"'%0A```=%20+%20>;</font>    ||
+|| document.referrer ||       Chrome     ||   6.0.472.53 beta        ||   http://host/path/to/page.ext/<font color="red">test%3Ca%22'%0A%60=%20+%20%3E;test%3Ca%22'%0A%60=%20+%20%3E</font><font color="green">?test%3Ca%22'%0A`=%20+%20%3E;</font>    ||
+|| document.referrer ||       Opera     ||  10.61        ||   http://host/path/to/page.ext/<font color="red">test%3Ca%22'%0A```=%20+%20%3E;test%3Ca%22'%0A`=%20+%20%3E</font><font color="green">?test%3Ca%22'%0A%60=%20+%20%3E;</font>    ||
+
 
 === name === 
 
