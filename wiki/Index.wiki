@@ -15,7 +15,7 @@ scheme://user:pass@host/path/to/page.ext/Pathinfo?search.location=value#hash=val
 
 Given the url:
 
-http://host/path/to/page.ext/test<a"'%0A`= +%20>;test<a"'%0A`= +%20>?test<a"'%0A`= +%20>;#test<a"'%0A`= +%20>;
+*http://host/path/to/page.ext/test<a"'%0A```= +%20>;test<a"'%0A```= +%20>?test<a"'%0A```= +%20>;#test<a"'%0A```= +%20>;*
 
 the following table shows how direct call of
  * location
@@ -31,24 +31,24 @@ the following table shows how direct call of
 are natively treated:
 
 || *Source* || *browser* || *version* || *output* ||
-|| location ||   IE 8     ||  8       ||     http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test<a"'%0A=%20+%20>;#test<a"'%0A=%20+%20>;      ||
-|| location ||   Opera     ||  10.61       ||     http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test%3Ca%22'%0A=%20+%20%3E;#test<a"'%0A= +%20>;    ||
-|| location.href ||   IE 8     ||  8       ||    http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test<a"'%0A=%20+%20>;#test<a"'%0A=%20+%20>;   ||
-|| location.href ||     Opera     ||  10.61       ||  http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test%3Ca%22'%0A=%20+%20%3E;#test<a"'%0A= +%20>;    ||
-|| location.search ||   IE 8     ||  8       ||    ?test<a"'%0A=%20+%20>;    ||
-|| location.search ||    Opera     ||  10.61        ||  ?test%3Ca%22'%0A=%20+%20%3E;    ||
-|| location.hash ||   IE 8     ||  8       ||     #test<a"'%0A=%20+%20>;    ||
-|| location.hash ||     Opera     ||  10.61       ||     #test<a"'%0A= +%20>;   ||
-|| location.pathname ||   IE 8     ||  8       ||       /path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E   ||
-|| location.pathname ||    Opera     ||  10.61        ||   /path/to/page.ext/test<a"'%0A= + >;test<a"'%0A= + > ||
-|| document.URL ||   IE 8     ||  8       ||     http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test<a"'%0A=%20+%20>;#test<a"'%0A=%20+%20>; ||
-|| document.URL ||    Opera     ||  10.61     ||  http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test%3Ca%22'%0A=%20+%20%3E;#test<a"'%0A= +%20>;   ||
+|| location ||   IE 8     ||  8       ||     http://host/path/to/page.ext/test%3Ca%22'%0A%60=%20+%20%3E;test%3Ca%22'%0A%60=%20+%20%3E?test<a"'%0A`=%20+%20>;#test<a"'%0A`=%20+%20>;      ||
+|| location ||   Opera     ||  10.61       ||     http://host/path/to/page.ext/test%3Ca%22'%0A%60=%20+%20%3E;test%3Ca%22'%0A%60=%20+%20%3E?test%3Ca%22'%0A%60=%20+%20%3E;#test<a"'%0A`= +%20>;    ||
+|| location.href ||   IE 8     ||  8       ||    http://host/path/to/page.ext/test%3Ca%22'%0A%60=%20+%20%3E;test%3Ca%22'%0A%60=%20+%20%3E?test<a"'%0A`=%20+%20>;#test<a"'%0A`=%20+%20>;   ||
+|| location.href ||     Opera     ||  10.61       ||  http://host/path/to/page.ext/test%3Ca%22'%0A%60=%20+%20%3E;test%3Ca%22'%0A%60=%20+%20%3E?test%3Ca%22'%0A%60=%20+%20%3E;#test<a"'%0A`= +%20>;    ||
+|| location.search ||   IE 8     ||  8       ||    ?test<a"'%0A`=%20+%20>;    ||
+|| location.search ||    Opera     ||  10.61        ||  ?test%3Ca%22'%0A%60=%20+%20%3E;    ||
+|| location.hash ||   IE 8     ||  8       ||   #test<a"'%0A`=%20+%20>;   ||
+|| location.hash ||     Opera     ||  10.61       ||   #test<a"'%0A`= +%20>;   ||
+|| location.pathname ||   IE 8     ||  8       ||       /path/to/page.ext/test%3Ca%22'%0A%60=%20+%20%3E;test%3Ca%22'%0A%60=%20+%20%3E ||
+|| location.pathname ||    Opera     ||  10.61        ||  /~stefano/domXssTests/test.php/test<a"'%0A`= + >;test<a"'%0A`= + > ||
+|| document.URL ||   IE 8     ||  8       ||     http://host/path/to/page.ext/test%3Ca%22'%0A%60=%20+%20%3E;test%3Ca%22'%0A%60=%20+%20%3E?test<a"'%0A`=%20+%20>;#test<a"'%0A`=%20+%20>;||
+|| document.URL ||    Opera     ||  10.61     ||  http://host/path/to/page.ext//test%3Ca%22'%0A`=%20+%20%3E;test%3Ca%22'%0A`=%20+%20%3E?test%3Ca%22'%0A%60=%20+%20%3E;#test<a"'%0A`= +%20>;    ||
 || document.documentURI ||   IE 8     ||  8       ||     undefined     ||
-|| document.documentURI ||    Opera     ||  10.61        ||     http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test%3Ca%22'%0A=%20+%20%3E;      ||
-|| document.URLUnencoded ||   IE 8     ||  8       ||     http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test<a"'%0A=%20+%20>;#test<a"'%0A=%20+%20>;  ||
+|| document.documentURI ||    Opera     ||  10.61        ||     http://host/path/to/page.ext/test%3Ca%22'%0A`=%20+%20%3E;test%3Ca%22'%0A`=%20+%20%3E?test%3Ca%22'%0A%60=%20+%20%3E;     ||
+|| document.URLUnencoded ||   IE 8     ||  8       ||     http://192.168.116.1/~stefano/domXssTests/test.php/test%3Ca%22'%0A%60=%20+%20%3E;test%3Ca%22'%0A%60=%20+%20%3E?test<a"'%0A`=%20+%20>;#test<a"'%0A`=%20+%20>;  ||
 || document.URLUnencoded ||   Opera     ||  10.61         ||  undefined    ||
 || document.baseURI ||   IE 8     ||  8       ||     undefined     ||
-|| document.baseURI ||     Opera     ||  10.61         ||     http://host/path/to/page.ext/test%3Ca%22'%0A=%20+%20%3E;test%3Ca%22'%0A=%20+%20%3E?test%3Ca%22'%0A=%20+%20%3E;      ||
+|| document.baseURI ||     Opera     ||  10.61         ||     http://host/path/to/page.ext/test%3Ca%22'%0A`=%20+%20%3E;test%3Ca%22'%0A`=%20+%20%3E?test%3Ca%22'%0A%60=%20+%20%3E;    ||
 
 
 === Cookie ===
