@@ -225,9 +225,9 @@ HTML 5 Storage objects [#References [6]][#References  [7]][#References [8] ] can
 
 Indirect source objects are:
 
-* localStorage 
-* sessionStorage
-* Database (Safari Only)
+ * localStorage 
+ * sessionStorage
+ * Database (Safari Only)
 
 
 
