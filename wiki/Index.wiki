@@ -105,37 +105,37 @@ the resulting cookie will be:
 For what concerns setting cookie precedence from two different hostnames sharing the same subdomain Kuza55 gives a very good compound `[`4`]` about browsers behavior.
 
 In particular quoted:
-<code>
-Resolving Conflicts
+{{{
+ Resolving Conflicts
 
-But what if two cookies of the same name should be sent to a given page, e.g. 
-if there is a cookie called "user" set for mail.google.com and .google.com with 
-different values, how does the browser decide which one to send?
-
-RFC 2109 states that the cookie with the more specific path attribute must be 
-sent first, however it does not define how to deal with two cookies which have 
-the same path (e.g. /) but different domains. If such a conflict occurs then 
-most (all?) browsers simply send the older cookie first.
-
-This means that if we want to overwrite a cookie on mail.google.com from the
-subdomain news.google.com, and the cookie already exists, then we cannot over-write
-a cookie with the path value of / (or whatever the path value of the existing
-cookie is), but we can override it for every other path (up to the maximum number
-of cookies allowed per host; 50 in IE/Firefox 30 in Opera), i.e. if we pick 50
-(or 30 if we want to target opera) paths on mail.google.com which encompass the
-directories and pages we want to overwrite the cookie for, we can simply set
-50 /30 separate cookies which are all more specific than the existing cookie.
-</code>
+ But what if two cookies of the same name should be sent to a given page, e.g. 
+ if there is a cookie called "user" set for mail.google.com and .google.com with 
+ different values, how does the browser decide which one to send?
+ 
+ RFC 2109 states that the cookie with the more specific path attribute must be 
+ sent first, however it does not define how to deal with two cookies which have 
+ the same path (e.g. /) but different domains. If such a conflict occurs then 
+ most (all?) browsers simply send the older cookie first.
+ 
+ This means that if we want to overwrite a cookie on mail.google.com from the
+ subdomain news.google.com, and the cookie already exists, then we cannot over-write
+ a cookie with the path value of / (or whatever the path value of the existing
+ cookie is), but we can override it for every other path (up to the maximum number
+ of cookies allowed per host; 50 in IE/Firefox 30 in Opera), i.e. if we pick 50
+ (or 30 if we want to target opera) paths on mail.google.com which encompass the
+ directories and pages we want to overwrite the cookie for, we can simply set
+ 50 /30 separate cookies which are all more specific than the existing cookie.
+}}}
 
 
 Also Kuza55 talks about paths:
-<pre>
+{{{
 Technically the spec say that a.b.c.d cannot set a cookie for a.b.c.d or b.c.d 
 only, none of the browsers enforce this since it breaks sites. 
 Also, sites should not be able to set a cookie with a path attribute which would
  not apply to the current page, but since path 
 boundaries are non-existant in browsers, no-one enforces this restriction either.
-</pre>
+}}}
 
 From a Javascript cookie string perspective, multiple cookies with same name are
 returned.
@@ -181,7 +181,7 @@ Of course if the function returns the last occurrence of the name in cookie stri
 document.cookie="SESSION=FAKESESSION; path=/; domain=.ct.im"
 }}}
 
-This can be considered a case of Parameter Pollution in Cookies `[`5`]`.
+This can be considered a case of Parameter Pollution in Cookies [#5 [5]].
 
 According to the use of the values this attack can be used to inject attacker controlled values and use it not only for Session Fixation but also to control javaScript flow or to perform classic DOMXss.
 
@@ -224,12 +224,12 @@ a sink is a potentially dangerous method that could lead to a vulnerability.
 In this case a DOM Based Xss.
 
 = References =
-`[`1`]`[http://www.webappsec.org/projects/articles/071105.shtml "DOM Based Cross Site Scripting or XSS of the Third Kind"], A. Klein, 2005.
+[=#1]`[`1`]`[http://www.webappsec.org/projects/articles/071105.shtml "DOM Based Cross Site Scripting or XSS of the Third Kind"], A. Klein, 2005.
 
-`[`2`]`[http://blog.watchfire.com/wfblog/2008/06/javascript-code.html "JavaScript Code Flow Manipulation, and a real world example advisory - Adobe Flex 3 Dom-Based XSS"], O. Segal & A. Sharabani, A. Yogev, June 2008.
+[=#2]`[`2`]`[http://blog.watchfire.com/wfblog/2008/06/javascript-code.html "JavaScript Code Flow Manipulation, and a real world example advisory - Adobe Flex 3 Dom-Based XSS"], O. Segal & A. Sharabani, A. Yogev, June 2008.
 
-`[`3`]`[http://www.ruxcon.org.au/files/2008/Attacking_Rich_Internet_Applications.pdf Attacking_Rich_Internet_Applications], S. Di Paola & A. Kuza, 2008.
+[=#3]`[`3`]`[http://www.ruxcon.org.au/files/2008/Attacking_Rich_Internet_Applications.pdf Attacking_Rich_Internet_Applications], S. Di Paola & A. Kuza, 2008.
 
-`[`4`]`[http://kuza55.blogspot.com/2008/02/understanding-cookie-security.html Understanding Cookie Security] , A. Kuza, February 22, 2008.
+[=#4]`[`4`]`[http://kuza55.blogspot.com/2008/02/understanding-cookie-security.html Understanding Cookie Security] , A. Kuza, February 22, 2008.
 
-`[`5`]`[http://www.owasp.org/images/b/ba/AppsecEU09_CarettoniDiPaola_v0.8.pdf Http Parameter Pollution] , L. Carettoni S. Di Paola, 2009. 
+[=#5]`[`5`]`[http://www.owasp.org/images/b/ba/AppsecEU09_CarettoniDiPaola_v0.8.pdf Http Parameter Pollution] , L. Carettoni S. Di Paola, 2009. 
