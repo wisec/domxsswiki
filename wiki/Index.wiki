@@ -1,4 +1,3 @@
-#sidebar Index
 = Table of Contents =
 <wiki:toc max_depth="3" />
 = Introduction =
