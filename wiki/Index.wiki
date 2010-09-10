@@ -240,9 +240,9 @@ Indirect source objects are:
 
 ==== Opener ====
 
-In 2008 in [#References [[5]]] it was presented a study about Browser Based DOM Xss, describing how browsers behave when objects belonging to different windows and domains are overwritten or deleted from evil pages.
+In 2008 in [#References [[3]]] it was presented a study about Browser Based DOM Xss, describing how browsers behave when objects belonging to different windows and domains are overwritten or deleted from evil pages.
 
-It was found that IE <= 7 allows cross windows/cross domain opener redefinition.
+It was found that IE <= 7 allows cross windows/cross domain opener redefinition, causing the re-instantiation of the object in the other window thus breaking the SOP in access control.
 
 {{{
 // From attacker.tld
