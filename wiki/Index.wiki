@@ -154,7 +154,7 @@ returns
 "SESSION=FAKESESSION; SESSION=TRUESESSION;"
 }}}
 
-Usually getCookie functions from JavaScript get the first occurrence of the cookie name, so, in this very case, the FAKESESSION value will be returned.
+Usually getCookie functions from javaScript get the first occurrence of the cookie name, so, in this very case, the FAKESESSION value will be returned.
 {{{
 getCookie = function (name) {
   var search = name + '=';
@@ -183,7 +183,7 @@ document.cookie="SESSION=FAKESESSION; path=/; domain=.ct.im"
 
 This can be considered a case of Parameter Pollution in Cookies `[`5`]`.
 
-According to the use of the values this attack can be used to inject attacker controlled values and use it not only for Session Fixation but also to control JavaScript flow or to perform classic DomXss.
+According to the use of the values this attack can be used to inject attacker controlled values and use it not only for Session Fixation but also to control javaScript flow or to perform classic DOMXss.
 
 
 
