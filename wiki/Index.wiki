@@ -92,9 +92,9 @@ are natively treated:
 
 Characters in Cookie values are invariant to the way they have been given.
 Which means that if a JavaScript application sets:
-{{{
+<code language="javascript">
 document.cookie="PREF=a\x01b; expires=Sun, 09-Sep-2012 06:38:09 GMT; path=/; domain=.host.tld"
-}}}
+</code>
 
 the resulting cookie will be:
 {{{
