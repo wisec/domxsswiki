@@ -98,7 +98,8 @@ document.cookie="PREF=a\x01b; expires=Sun, 09-Sep-2012 06:38:09 GMT; path=/; dom
 
 the resulting cookie will be:
 {{{
-PREF=ab;
+"PREF=ab;"
+//for browsers that don't show the whole string, "a\x01b" 
 }}}
 
 For what concerns setting cookie precedence from two different hostnames sharing the same subdomain Kuza55 gives a very good compound `[`4`]` about browsers behavior.
