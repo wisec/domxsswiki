@@ -1,4 +1,5 @@
-#sidebar <wiki:toc max_depth="3" />
+= Table of Contents =
+<wiki:toc max_depth="3" />
 = Introduction =
 
 DOM Xss Test Cases Wiki Project
