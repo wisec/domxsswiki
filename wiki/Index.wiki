@@ -88,10 +88,11 @@ are natively treated:
 || location.hash ||     Chrome     ||   6.0.472.53 beta    || *No pathName*   || *No Search* || 32 (` `), 33 (`!`), 34 (`"`), 35 (`#`), 36 (`$`), 37 (`%`), 38 (`&`), 39 (`'`), 40 (`(`), 41 (`)`), 42 (`*`), 43 (`+`), 44 (`,`), 45 (`-`), 46 (`.`), 47 (`/`), 58 (`:`), 59 (`;`), 60 (`<`), 61 (`=`), 62 (`>`), 64 (`@`), 91 (`[`), 92 (`\`), 93 (`]`), 94 (`^`), 95 (`_`), 96 (```), 123 (`{`), 124 (`|`), 125 (`}`), 126 (`~`), `[`127 - 255 `]`||<font color="blue">#test<a"'%0A```= +%20>;</font>  ||
 || location.hash ||     Opera     ||  10.61       || *No pathName*  || *No Search* || 1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32 (` `), 33 (`!`), 34 (`"`), 35 (`#`), 36 (`$`), 37 (`%`), 38 (`&`), 39 (`'`), 40 (`(`), 41 (`)`), 42 (`*`), 43 (`+`), 44 (`,`), 45 (`-`), 46 (`.`), 47 (`/`), 58 (`:`), 59 (`;`), 60 (`<`), 61 (`=`), 62 (`>`), 64 (`@`), 91 (`[`), 92 (`\`), 93 (`]`), 94 (`^`), 95 (`_`), 96 (```), 123 (`{`), 124 (`|`), 125 (`}`), 126 (`~`), `[`127 - 255`]` ||  <font color="blue">#test<a"'%0A```= +%20>;</font>   ||
 
+ 
 === The Cookies Sources ===
 
 Characters in Cookie values are invariant to the way they have been given.
-Which means that if a JavaScript application sets:
+Which means that if a !JavaScript application sets:
 <code language="javascript">
 document.cookie="PREF=a\x01b; expires=Sun, 09-Sep-2012 06:38:09 GMT; path=/; domain=.host.tld"
 </code>
@@ -183,8 +184,7 @@ document.cookie="SESSION=FAKESESSION; path=/; domain=.ct.im"
 
 This can be considered a case of Parameter Pollution in Cookies [#5 [5]].
 
-According to the use of the values this attack can be used to inject attacker controlled values and use it not only for Session Fixation but also to control javaScript flow or to perform classic DOMXss.
-
+Depending on how the !JavaScript application will later use specific cookie values, this manipulation can be used to inject attacker controlled inputs and use them not only for Session Fixation but also to control !JavaScript flow or to perform classic DOMXss.
 
 
 
@@ -201,10 +201,23 @@ are natively treated:
 || document.referrer ||       Chrome     ||   6.0.472.53 beta        || 33 (`!`), 37 (`%`), 38 (`&`), 39 (`'`), 40 (`(`), 41 (`)`), 42 (`*`), 43 (`+`), 44 (`,`), 45 (`-`), 46 (`.`), 47 (`/`), 58 (`:`), 59 (`;`), 61 (`=`), 64 (`@`), 91 (`[`), 93 (`]`), 95 (`_`), 126 (`~`)  ||  33 (`!`), 37 (`%`), 38 (`&`), 39 (`'`), 40 (`(`), 41 (`)`), 42 (`*`), 43 (`+`), 44 (`,`), 45 (`-`), 46 (`.`), 47 (`/`), 58 (`:`), 59 (`;`), 61 (`=`), 63 (`?`), 64 (`@`), 91 (`[`), 92 (`\`), 93 (`]`), 94 (`^`), 95 (`_`), 96 (```), 123 (`{`), 124 (`|`), 125 (`}`), 126 (`~`) || None || http://host/path/to/page.ext/<font color="red">test%3Ca%22'%0A%60=%20+%20%3E;test%3Ca%22'%0A%60=%20+%20%3E</font><font color="green">?test%3Ca%22'%0A`=%20+%20%3E;</font>    ||
 || document.referrer ||       Opera     ||  10.61    || 33 (`!`), 37 (`%`), 38 (`&`), 39 (`'`), 40 (`(`), 41 (`)`), 42 (`*`), 43 (`+`), 44 (`,`), 45 (`-`), 46 (`.`), 47 (`/`), 58 (`:`), 59 (`;`), 61 (`=`), 64 (`@`), 91 (`[`), 93 (`]`), 94 (`^`), 95 (`_`), 96 (```), 123 (`{`), 124 (`|`), 125 (`}`), 126 (`~`), `[`127 - 255`]`  || 33 (`!`), 37 (`%`), 38 (`&`), 39 (`'`), 40 (`(`), 41 (`)`), 42 (`*`), 43 (`+`), 44 (`,`), 45 (`-`), 46 (`.`), 47 (`/`), 58 (`:`), 59 (`;`), 61 (`=`), 63 (`?`), 64 (`@`), 91 (`[`), 93 (`]`), 94 (`^`), 95 (`_`), 123 (`{`), 124 (`|`), 125 (`}`), 126 (`~`) || None    ||   http://host/path/to/page.ext/<font color="red">test%3Ca%22'%0A```=%20+%20%3E;test%3Ca%22'%0A`=%20+%20%3E</font><font color="green">?test%3Ca%22'%0A%60=%20+%20%3E;</font>    ||
 
-
+ 
 === The Window Name Source === 
 
- * window.name
+Characters in window.name value are invariant to the way they have been given.
+Which means that if a !JavaScript application sets:
+
+{{{
+window.name='a\x01b'
+}}}
+
+no encoding is applied.
+
+Window.name attribute is always a cast to the string representation of the object it is assigned to.
+
+The window.name attribute is a persistent value during the existence of the page to which is assigned.
+
+An attacker can set new windows names and frames with no restriction, and they will persist during navigation on any domain.
 
 === Other Objects Sources ===
 
@@ -224,7 +237,7 @@ a sink is a potentially dangerous method that could lead to a vulnerability.
 In this case a DOM Based Xss.
 
 = References =
-<a name="1">`[`1`]`</a>[http://www.webappsec.org/projects/articles/071105.shtml "DOM Based Cross Site Scripting or XSS of the Third Kind"], A. Klein, 2005.
+<a class="section_anchor" href="#1">`[`1`]`</a>[http://www.webappsec.org/projects/articles/071105.shtml "DOM Based Cross Site Scripting or XSS of the Third Kind"], A. Klein, 2005.
 
 <a name="2"></a>`[`2`]`[http://blog.watchfire.com/wfblog/2008/06/javascript-code.html "JavaScript Code Flow Manipulation, and a real world example advisory - Adobe Flex 3 Dom-Based XSS"], O. Segal & A. Sharabani, A. Yogev, June 2008.
 
@@ -232,4 +245,4 @@ In this case a DOM Based Xss.
 
 <a name="4">`[`4`]`</a>[http://kuza55.blogspot.com/2008/02/understanding-cookie-security.html Understanding Cookie Security] , A. Kuza, February 22, 2008.
 
-<a name="5"></a>`[`5`]`[http://www.owasp.org/images/b/ba/AppsecEU09_CarettoniDiPaola_v0.8.pdf Http Parameter Pollution] , L. Carettoni S. Di Paola, 2009. 
+<a class="section_anchor" href="#1">`[`5`]`</a>[http://www.owasp.org/images/b/ba/AppsecEU09_CarettoniDiPaola_v0.8.pdf Http Parameter Pollution] , L. Carettoni S. Di Paola, 2009. 
