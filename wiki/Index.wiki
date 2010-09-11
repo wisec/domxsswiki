@@ -270,6 +270,32 @@ Opener object can, hence, be considered as a source of untrusted input in the un
 
 N.B. IE 8 fixes this issue.
 
+== Sinks ==
+
+=== Execution Sinks ===
+
+=== Set Object Sinks ===
+
+=== HTMLElement Sinks ===
+
+=== Style Sinks ===
+
+=== XMLHttpRequest Sink ===
+
+=== Set Cookie Sink ===
+
+=== Set Location Sink ===
+
+=== Control Flow Sink ===
+
+=== Use of Equals Against Strict Equals ===
+
+=== Math.random Sink ===
+
+=== JSON Sink ===
+
+=== XML Sink ===
+
 = Glossary =
 
 *Source:*
