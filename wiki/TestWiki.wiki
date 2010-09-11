@@ -10,7 +10,7 @@ nothing to see here.. this is a testbed for this awful wiki formatting
 || *Source* || *browser* || *version* || *pathInfo* || 
 || document.URL ||   IE 8     ||  8       || <table align="right" ><tr align="right"><td> 33 (`!`),</td><td> 36 (`$`),</td><td> 38 (`&`),</td><td> 39 (`'`),</td><td> 40 (`(`),</td><td> 41 (`)`),</td><td> 42 (`*`),</td><td> 43 (`+`),</td></tr><tr align="right"><td> 44 (`,`),</td><td> 45 (`-`),</td><td> 46 (`.`),</td><td> 47 (`/`),</td><td> 58 (`:`),</td><td> 59 (`;`),</td><td> 61 (`=`),</td><td> 64 (`@`),</td></tr><tr><td> 91 (`[`),</td><td> 93 (`]`),</td><td> 95 (`_`), </td><td>126 (`~`)</td><td>`[127-255]`</td></tr></table> ||  
 
-[#`[`_1_`]` go]
+[#[_1_] go]
 
 
 
