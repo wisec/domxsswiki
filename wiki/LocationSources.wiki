@@ -1,5 +1,3 @@
-#summary One-sentence summary of this page.
-
 === The location/documentURI/URL Sources ===
 
 Considering the classic url format:
