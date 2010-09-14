@@ -11,10 +11,10 @@ a potentially dangerous way resulting in loss of Confidentiality, Integrity or A
 (the CIA triad).
 
 = Summary =
- * [ReadTables How to read tables]
- * [Location The location/documentURI/URL Sources]
- * [The_Cookies_Sources The Cookies Sources]
- * [The_Referrer_Source The Referrer Source]
- * [The_Window_Name_Source The Window Name Source]
- * [Indirect_Sources Indirect Sources]
- * [Other_Objects_Sources Other Objects Sources]
+ * [HowToReadTables How to read tables]
+ * [LocationSources The location/documentURI/URL Sources]
+ * [TheCookiesSources The Cookies Sources]
+ * [TheReferrerSource The Referrer Source]
+ * [TheWindowNameSource The Window Name Source]
+ * [IndirectSources Indirect Sources]
+ * [OtherObjectsSources Other Objects Sources]
