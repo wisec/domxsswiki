@@ -11,7 +11,8 @@ a potentially dangerous way resulting in loss of Confidentiality, Integrity or A
 (the CIA triad).
 
 = Summary =
- * [HowToReadTables How to read tables]
+
+
  * [ExecutionSinks Execution Sinks]
  * [SetObjectSinks Set Object Sinks]
  * [HTMLElementSinks HTMLElement Sinks]
