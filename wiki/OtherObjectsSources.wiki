@@ -1,0 +1,7 @@
+=== Other Objects Sources ===
+
+(TBA)
+
+ * opener (IE <= 7 Only)
+ * parent/top/frames`[`i`]`.obj
+ * event.data of onmessage event for postMessage method
