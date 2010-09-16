@@ -1,4 +1,5 @@
 == Filters ==
 
  * escape
- * encodeURIComponents
+ * encodeURI
+ * encodeURIComponent
