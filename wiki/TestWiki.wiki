@@ -158,6 +158,6 @@ sa
 d
 sa
 
-
-===== 1. =====
+<span id="1">`[`1`]`</span> [http://www.webappsec.org/projects/articles/071105.shtml "DOM Based Cross Site Scripting or XSS of the Third Kind"], A. Klein, 2005.
+ 
 reference
