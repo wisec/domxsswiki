@@ -1,0 +1,17 @@
+= References =
+
+`[`1`]` [http://www.webappsec.org/projects/articles/071105.shtml "DOM Based Cross Site Scripting or XSS of the Third Kind"], A. Klein, 2005.
+
+`[`2`]` [http://blog.watchfire.com/wfblog/2008/06/javascript-code.html "JavaScript Code Flow Manipulation, and a real world example advisory - Adobe Flex 3 Dom-Based XSS"], O. Segal & A. Sharabani, A. Yogev, June 2008.
+
+`[`3`]` [http://www.ruxcon.org.au/files/2008/Attacking_Rich_Internet_Applications.pdf Attacking_Rich_Internet_Applications], S. Di Paola & A. Kuza, 2008.
+
+`[`4`]` [http://kuza55.blogspot.com/2008/02/understanding-cookie-security.html Understanding Cookie Security] , A. Kuza, February 22, 2008.
+
+`[`5`]` [http://www.owasp.org/images/b/ba/AppsecEU09_CarettoniDiPaola_v0.8.pdf Http Parameter Pollution] , L. Carettoni S. Di Paola, 2009. 
+
+`[`6`]` [http://dev.w3.org/html5/webdatabase/ W3C ClientSide Database]
+
+`[`7`]` [http://dev.w3.org/html5/webstorage W3C Web Storage]
+
+`[`8`]` [http://msdn.microsoft.com/en-us/library/cc197062%28VS.85%29.aspx Microsoft's Introduction to DOM Storage]
