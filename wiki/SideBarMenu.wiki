@@ -21,4 +21,4 @@
   * [JSONSink JSON Sink]
   * [XMLSink XML Sink]
  * Glossary
- * References
+ * [References References]
