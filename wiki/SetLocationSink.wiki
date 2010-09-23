@@ -1,0 +1,51 @@
+= Location Sink =
+
+Window.location (or document.location) and its members can be a source and a sink 
+The window.location object can be used to take the browser to another page by simply
+assigning a string to it.
+
+Eg.
+{{{
+window.location = "http://example.com/a/page.ext?par=val#hash"
+}}}
+
+== The object assignment == 
+
+ * location
+ * location.href
+ * location.pathname
+ * location.search
+ * location.protocol
+ * location.hostname
+
+An unvalidated assignment to each of the listed objects could lead,
+to some extent, to security issues.
+
+(TBF)
+
+=== Attacks ===
+
+(TBA)
+
+== Location Methods ==
+
+Location dangerous methods are:
+
+ * location.assign
+ * location.replace
+
+Eg. 
+{{{
+taintedVariable=location.href.split("#")[1];
+location.assign(taintedVariable);
+}}}
+
+The following table contains sink methods and the arguments where a untrusted value could lead to security issues.
+
+|| *Method* || *Tainted Argument Position* ||
+||  location.assign      || 1 ||
+||  location.replace      || 1 ||
+
+=== Attacks ===
+
+(TBA)
