@@ -1,6 +1,6 @@
 = Location Sink =
 
-Window.location (or document.location) and its members can be a source and a sink 
+Window.location (or document.location) and its members can be a source and a sink `[`[References 1]`]`
 The window.location object can be used to take the browser to another page by simply
 assigning a string to it.
 
