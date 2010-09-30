@@ -6,3 +6,9 @@ Dom Xss Test Cases Wiki is a KB for defining sources of attacker controlled inpu
 This project aims also to identify sources and sinks methods exposed by public, widely used javascript frameworks.
 
 Use the sidebar menu to navigate contents.
+
+
+ 
+This project is sponsored by
+
+[http://www.mindedsecurity.com http://www.mindedsecurity.com/images/logo.png]
