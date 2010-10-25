@@ -5,6 +5,7 @@
   * [TheCookiesSources The Cookies Sources]
   * [TheReferrerSource The Referrer Source]
   * [TheWindowNameSource The Window Name Source]
+  * [TheHistorySources The History Sources]
   * [IndirectSources Indirect Sources]
   * [OtherObjectsSources Other Objects Sources]
  * [Sinks Sinks]
