@@ -13,6 +13,7 @@
   * [SetObjectSinks Set Object Sinks]
   * [HTMLElementSinks HTMLElement Sinks]
   * [StyleSinks Style Sinks]
+    * [CssText cssText Sink]
   * [XMLHttpRequestSink XMLHttpRequest Sink]
   * [SetCookieSink Set Cookie Sink]
   * [SetLocationSink Set Location Sink]
