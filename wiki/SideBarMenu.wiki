@@ -20,5 +20,6 @@
   * [MathRandomSink Math.random Sink]
   * [JSONSink JSON Sink]
   * [XMLSink XML Sink]
+ * Finding DOMXSS
  * Glossary
  * [References References]
