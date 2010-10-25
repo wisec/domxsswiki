@@ -1,0 +1,7 @@
+= Details =
+
+Setting a CSSStyleDeclaration by using unescaped input could be dangerous. 
+It is mostly browser specific. The following table shows Javascript based attacks.
+
+|| Browser || Version || CssText attack || Impact ||
+|| || || || ||
