@@ -7,7 +7,7 @@ Modern user agents such as Chromium 7+, Firefox 4+ and others provide a history 
  * `history.pushState()`
  * `history.replaceState()`
 
-What makes those methods interesting i9n terms of DOMXSS is the fact that they - when being called correctly - have direct impact on the actual `location` object. Let's have a look at an example:
+What makes those methods interesting in terms of DOMXSS is the fact that they - when being called correctly - have direct impact on the actual `location` object. Let's have a look at an example:
 
 {{{
 history.pushState({state:'object'}, '', '?javascript:alert(1)');
