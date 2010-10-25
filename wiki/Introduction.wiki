@@ -1,14 +1,11 @@
 #labels To-Be-Finished
-= Dom Xss Wiki =
+= DOMXSS Wiki =
 
-Dom Xss Test Cases Wiki is a KB for defining sources of attacker controlled inputs and sinks which potentially could introduce DOM Based Xss issues.
+The DOMXSS Wiki is a Knowledge Base for defining sources of attacker controlled inputs and sinks which potentially could introduce DOM Based XSS issues. DOMXSS first being thoroughly documented in a [http://www.webappsec.org/projects/articles/071105.html paper by Amit Klein] in 2005 has risen in relevance over the last years - nevertheless still lacking a central place for collecting information and knowledge about it.
 
-This project aims also to identify sources and sinks methods exposed by public, widely used javascript frameworks.
+The project aims also to identify sources and sinks methods exposed by public, widely used javascript frameworks. The project is a work in progress and will be extended over time. Contributions are welcome.
 
-Use the sidebar menu to navigate contents.
+Please use the sidebar menu to navigate contents.
 
-
- 
 This project is sponsored by
-
 [http://www.mindedsecurity.com http://www.mindedsecurity.com/images/logo.png]
