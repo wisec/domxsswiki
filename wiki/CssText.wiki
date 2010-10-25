@@ -3,5 +3,5 @@
 Setting a CSSStyleDeclaration by using unescaped input could be dangerous. 
 It is mostly browser specific. The following table shows Javascript based attacks.
 
-|| Browser || Version || `CssText` attack vector || Impact ||
-|| || || || ||
+|| Tag || Browser || Version  ||`CssText` attack vector || Impact ||
+|| a  || Opera  || 10.63 || -o-link:'javascript:alert(1)';-o-link-source:current || Xss with user click ||
