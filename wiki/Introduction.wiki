@@ -7,5 +7,6 @@ The project aims also to identify sources and sinks methods exposed by public, w
 
 Please use the sidebar menu to navigate contents.
 
-This project is sponsored by
+This project is sponsored by:
+
 [http://www.mindedsecurity.com http://www.mindedsecurity.com/images/logo.png]
