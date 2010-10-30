@@ -12,7 +12,7 @@ the resulting cookie will be:
 //for browsers that don't show the whole string, "a\x01b" 
 }}}
 
-For what concerns setting cookie precedence from two different hostnames sharing the same subdomain Kuza55 gives a very good compound [#References [4]] about browsers behavior.
+For what concerns setting cookie precedence from two different hostnames sharing the same subdomain Kuza55 gives a very good compound [References [4]] about browsers behavior.
 
 In particular quoted:
 {{{
