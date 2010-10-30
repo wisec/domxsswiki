@@ -1,4 +1,4 @@
-#labels TBFwithSafarTests
+#labels ToBeCompletedwithSafariTests
 === The location/documentURI/URL Sources ===
 
 Considering the classic url format:
