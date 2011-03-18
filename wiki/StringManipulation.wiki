@@ -23,5 +23,5 @@ Javascript has some string manipulation methods. It is important to identify the
 === Special Characters ===
  * \s 
  * \w
- * []
+ * `[``]`
  * ()
