@@ -1,0 +1,27 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Javascript has some string manipulation methods. It is important to identify their behaviour in order to understand how they treat specific characters.
+
+
+= Details =
+== Native Encoding Methods ==
+ * escape/unescape
+ * encodeURI/decodeURI
+ * encodeURIComponent/decodeURIComponent
+
+
+
+== RegExps ==
+
+=== flag modifiers ==
+ * g : *global flag*
+ * i : *case insensitive*
+ * m : *multi line*
+
+=== Special Characters ===
+ * \s 
+ * \w
+ * []
+ * ()
