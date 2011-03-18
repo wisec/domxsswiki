@@ -22,6 +22,7 @@
   * [MathRandomSink Math.random Sink]
   * [JSONSink JSON Sink]
   * [XMLSink XML Sink]
+ * [StringManipulation String Manipulation Methods]
  * [LocalDOMXSS Local DOMXSS]
  * [FindingDOMXSS Finding DOMXSS]
  * Glossary
