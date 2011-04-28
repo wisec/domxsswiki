@@ -16,10 +16,7 @@ One of the easiest methods to use is to just apply several regular expressions t
 The following regular expression attempts to match most common DOMXSS sources (BETA):
 
 {{{
-(location\s*[\[.])|([.\[]\s*["']?\s*(arguments|dialogArguments
-|innerHTML|write(ln)?|open(Dialog)?|showModalDialog|cookie|URL
-|documentURI|baseURI|referrer|name|opener|parent|top|content|self|frames)\W)
-|(localStorage|sessionStorage|Database)
+/(location\s*[\[.])|([.\[]\s*["']?\s*(arguments|dialogArguments|innerHTML|write(ln)?|open(Dialog)?|showModalDialog|cookie|URL|documentURI|baseURI|referrer|name|opener|parent|top|content|self|frames)\W)|(localStorage|sessionStorage|Database)/
 }}}
 
 == Finding Sinks ==
@@ -27,10 +24,7 @@ The following regular expression attempts to match most common DOMXSS sources (B
 The following regular expression attempts to match most common DOMXSS sinks (BETA):
 
 {{{
-((src|href|data|location|code|value|action)\s*["'\]]*\s*\+?\s*=)
-|((replace|assign|navigate|getResponseHeader|open(Dialog)?
-|showModalDialog|eval|evaluate|execCommand|execScript|setTimeout
-|setInterval)\s*["'\]]*\s*\()
+/((src|href|data|location|code|value|action)\s*["'\]]*\s*\+?\s*=)|((replace|assign|navigate|getResponseHeader|open(Dialog)?|showModalDialog|eval|evaluate|execCommand|execScript|setTimeout|setInterval)\s*["'\]]*\s*\()/
 }}}
 
 = Meta-Programming = 
