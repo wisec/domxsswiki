@@ -13,3 +13,20 @@ are natively treated:
 || document.referrer ||       Opera     ||  10.61    || 33 (`!`), 37 (`%`), 38 (`&`), 39 (`'`), 40 (`(`), 41 (`)`), 42 (`*`), 43 (`+`), 44 (`,`), 45 (`-`), 46 (`.`), 47 (`/`), 58 (`:`), 59 (`;`), 61 (`=`), 64 (`@`), 91 (`[`), 93 (`]`), 94 (`^`), 95 (`_`), 96 (```), 123 (`{`), 124 (`|`), 125 (`}`), 126 (`~`), `[`127 - 255`]`  || 33 (`!`), 37 (`%`), 38 (`&`), 39 (`'`), 40 (`(`), 41 (`)`), 42 (`*`), 43 (`+`), 44 (`,`), 45 (`-`), 46 (`.`), 47 (`/`), 58 (`:`), 59 (`;`), 61 (`=`), 63 (`?`), 64 (`@`), 91 (`[`), 93 (`]`), 94 (`^`), 95 (`_`), 123 (`{`), 124 (`|`), 125 (`}`), 126 (`~`) || None    ||   http://host/path/to/page.ext/<font color="red">test%3Ca%22'%0A```=%20+%20%3E;test%3Ca%22'%0A`=%20+%20%3E</font><font color="green">?test%3Ca%22'%0A%60=%20+%20%3E;</font>    ||
 
 (To Be Finished with Safari tests) 
+
+*Important Note* 
+
+As shown [http://blog.mindedsecurity.com/2011/03/abusing-referrer-on-explorer-for.html here] Internet Explorer allows special characters in the hostname.
+That is an attacker could setup a DNS wildcard and create entry for hostnames like the following:
+{{{
+">host<img%20src=s%20onerror=alert(1)>.attacker.com
+}}}
+
+If we suppose a JavaScript code like the following:
+
+{{{
+with(document)
+ write('<sc'+"ript src="http://Host/image.gif?t="+c+"r="+(referrer.split("/")[2])+"></sc"+'ript>');  
+}}}
+
+it can be easily seen that, according to what has been said, the code is exploitable.
