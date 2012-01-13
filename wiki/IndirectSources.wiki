@@ -12,11 +12,12 @@ Indirect source objects are:
 
  * localStorage 
  * sessionStorage
+ * IndexedDB (mozIndexedDB, webkitIndexedDB, msIndexedDB)
  * Database (Safari Only)
 
 ==== Server Response Sources ====
 
-Previously server side stored data could be used by an attacker to send untrusted input
+Previously server side stored data could be used by an attacker to send untrusted input 
 to Javascript.
 
 (TBF)
