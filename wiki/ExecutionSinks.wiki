@@ -15,6 +15,6 @@ The following JavaScript functions parse strings as JavaScript. If it is possibl
 || ScriptElement.text || assignedValue || *Explorer* || script.text = 'jsCode'+*usercontrolledVal*  ||
 || ScriptElement.textContent || assignedValue || *All but IE* || script.textContent = 'jsCode'+*usercontrolledVal*  ||
 || ScriptElement.innerText || assignedValue || *All but Firefox* || script.innerText = 'jsCode'+*usercontrolledVal*  ||
-|| anyTag.on*EventName* || assignedValue || *All* || anyTag.onclick = 'jsCode'+*usercontrolledVal*  ||
+|| anyTag.*onEventName* || assignedValue || *All* || anyTag.onclick = 'jsCode'+*usercontrolledVal*  ||
 
 (TBF)
