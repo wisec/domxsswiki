@@ -12,6 +12,7 @@ The following JavaScript functions parse strings as JavaScript. If it is possibl
 || setInterval ||  first <span title="if and only if">_IIF_</span> it is a string || *All* || setInterval("jsCode"+*usercontrolledVal* ,timMs) ||
 || execScript ||  first || *IE 6+* || execScript("jsCode"+*usercontrolledVal* ,"JScript") ||
 || crypto.generateCRMFRequest || 5th || *Firefox 2+* || crypto.generateCRMFRequest('CN=0',0,0,null,'jsCode'+*usercontrolledVal*,384,null,'rsa-dual-use') ||
+|| ScriptElement.src || assignedValue || *All* || script.src =  *usercontrolledVal*  ||
 || ScriptElement.text || assignedValue || *Explorer* || script.text = 'jsCode'+*usercontrolledVal*  ||
 || ScriptElement.textContent || assignedValue || *All but IE* || script.textContent = 'jsCode'+*usercontrolledVal*  ||
 || ScriptElement.innerText || assignedValue || *All but Firefox* || script.innerText = 'jsCode'+*usercontrolledVal*  ||
