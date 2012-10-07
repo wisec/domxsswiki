@@ -9,7 +9,7 @@ The following sinks allow HTML injection:
  * *jQuery( _htmlText_ `[`, ownerDocument`]`  )* and *$( _htmlText_ `[`, ownerDocument`]`  )* : if the first argument contains a pattern that matches with some known tag it'll be created a HTML fragment. [http://api.jquery.com/jQuery/#jQuery2 Reference]. *Update*: as of version 1.6.1 this is exploitable only if the _htmlText_ *does not* starts with #.
  * element.*html( _userContent_ )*: equivalent in assigning element.innerHTML = usercontent.[http://api.jquery.com/html/#html2 Reference]
  * element.*append( _userContent_ )* : equivalent in  document.createElement("div").innerHTML = usercontent. and then appending the div to element.[http://api.jquery.com/append/ Reference]
-
+ * *jQuery.parseHTML(_htmlText_)*: static method introduced on version 1.8.0 which uses createContextualFragment to parse HTML using the browser parser.
 The following sinks allow JavaScript execution:
  * *jQuery.globalEval( _userContent_ )*: equivalent to eval sink.[http://api.jquery.com/jQuery.globalEval/ Reference]
 
