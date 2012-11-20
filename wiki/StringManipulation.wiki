@@ -70,11 +70,29 @@ console.log("|| `"+cc+"``[`"+i+"`]` || "+eu+" || "+euc+ " ||");
 || `?``[`63`]` || %3F || ? ||
 
 for i >= 128 exception is triggered
-== decodeURI and decodeURIComponents utrigger exception on malformed seq. ==
+
+== decodeURI and decodeURIComponents triggers exception on malformed seq. ==
 {{{
 console.log(decodeURI("%C3%D8"));
 }}}
 
+This behavior could be exploited in cases such as:
+
+{{{
+ var locParameter = getFromQueryString("aParameter");
+  
+try{
+ ...
+ locParameter = encodeUriComponent(locParameter);
+ ...
+}catch(e){}
+...
+ document.write(locParameter);
+...
+}}}
+
+where the tainted variable is overwritten with its encoded value and later used
+in a sink.
 
 == RegExps ==
 
