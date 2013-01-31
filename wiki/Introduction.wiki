@@ -7,6 +7,8 @@ The project aims top be this very place and to identify sources and sinks method
 
 Please use the sidebar menu to navigate contents.
 
-This project is sponsored by:
+This project is mainly mantained by Stefano Di Paola and sponsored by:
 
 [http://www.mindedsecurity.com http://www.mindedsecurity.com/images/logo.png]
+
+Feel free to mail me if you want to collaborate!
