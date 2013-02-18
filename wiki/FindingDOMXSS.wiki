@@ -29,4 +29,4 @@ The following regular expression attempts to match most common DOMXSS sinks (BET
 
 = Meta-Programming = 
 
-Modern user agents allow overwriting and extending existing JavaScript and DOM properties. Using this to analyze the JavaScript code flow can help identifying DOMXSS vulnerabilities by just checking every incoming data before it's being written to the DOM. An approach to automatize this in the works and will soon be released here.
+Modern user agents allow overwriting and extending existing JavaScript and DOM properties. Using this to analyze the JavaScript code flow can help identifying DOMXSS vulnerabilities by just checking every incoming data before it's being written to the DOM. An approach to automate this is in the works and will soon be released here.
