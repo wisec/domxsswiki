@@ -1,0 +1,36 @@
+# Finding DOMXSS #
+
+DOMXSS vulnerabilities are rather hard to find by using classic techniques such as scanners and black box testing methods.
+
+Luckily the tester usually has full access to the JavaScript sources to apply a source code audit and use simple techniques to get an overview on where possible sources and sinks hide in the analyzed files.
+
+One of the easiest methods to use is to just apply several regular expressions to the sources and have a look at the results. Most editors provide a way to use regular expressions as search pattern and will show the results highlighted very nicely so the tester can navigate from finding to finding and have a more detailed look if the possible sources and sinks can be exploited.
+
+
+# Regular Expressions #
+
+## Finding Sources ##
+
+The following regular expression attempts to match most common DOMXSS sources (BETA):
+
+```
+/(location\s*[\[.])|([.\[]\s*["']?\s*(arguments|dialogArguments|innerHTML|write(ln)?|open(Dialog)?|showModalDialog|cookie|URL|documentURI|baseURI|referrer|name|opener|parent|top|content|self|frames)\W)|(localStorage|sessionStorage|Database)/
+```
+
+## Finding Sinks ##
+
+The following regular expression attempts to match most common DOMXSS sinks (BETA):
+
+```
+/((src|href|data|location|code|value|action)\s*["'\]]*\s*\+?\s*=)|((replace|assign|navigate|getResponseHeader|open(Dialog)?|showModalDialog|eval|evaluate|execCommand|execScript|setTimeout|setInterval)\s*["'\]]*\s*\()/
+```
+
+This regular expression finds sinks based on jQuery, it also finds the **$** function, which is not always insecure:
+
+```
+/after\(|\.append\(|\.before\(|\.html\(|\.prepend\(|\.replaceWith\(|\.wrap\(|\.wrapAll\(|\$\(|\.globalEval\(|\.add\(|jQUery\(|\$\(|\.parseHTML\(/
+```
+
+# Meta-Programming #
+
+Modern user agents allow overwriting and extending existing JavaScript and DOM properties. Using this to analyze the JavaScript code flow can help identifying DOMXSS vulnerabilities by just checking every incoming data before it's being written to the DOM. An approach to automate this is in the works and will soon be released here.

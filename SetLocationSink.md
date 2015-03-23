@@ -1,0 +1,75 @@
+# Location Sink #
+
+Window.location (or document.location) and its members can be a source and a sink `[`[1](References.md)`]`
+The window.location object can be used to take the browser to another page by simply
+assigning a string to it.
+
+Eg.
+```
+window.location = "http://example.com/a/page.ext?par=val#hash"
+```
+
+## The object assignment ##
+
+  * location
+  * location.href
+  * location.pathname
+  * location.search
+  * location.protocol
+  * location.hostname
+
+An unvalidated assignment to each of the listed objects could lead,
+to some extent, to security issues.
+
+
+(TBF)
+
+### Attacks ###
+
+**Important Note**
+Internet Explorer 8 will decode entities to their original values if they are somewhere present in the left value.
+
+E.g.
+```
+ location="javascript&#x3a;alert(1)";
+```
+
+&#x3a; (or its decimal analogue &#58;) will be converted to ':'.
+Other browsers like Firefox (3.6), Opera (10), Chrome (5), Safari (5) don't replace entities to their converted chars.
+
+#### location ####
+
+#### location.pathname ####
+
+#### location.search ####
+
+#### location.protocol ####
+
+#### location.hostname ####
+
+
+(TBF)
+
+## Location Methods ##
+
+Location dangerous methods are:
+
+  * location.assign
+  * location.replace
+
+Eg.
+```
+taintedVariable=location.href.split("#")[1];
+location.assign(taintedVariable);
+```
+
+The following table contains sink methods and the arguments where a untrusted value could lead to security issues.
+
+| **Method** | **Tainted Argument Position** |
+|:-----------|:------------------------------|
+|  location.assign      | 1 |
+|  location.replace      | 1 |
+
+### Attacks ###
+
+(TBA)

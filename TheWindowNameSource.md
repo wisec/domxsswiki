@@ -1,0 +1,16 @@
+### The Window Name Source ###
+
+Characters in window.name value are invariant to the way they have been given.
+Which means that if a JavaScript application sets:
+
+```
+window.name='a\x01b'
+```
+
+no encoding is applied.
+
+Window.name attribute is always a cast to the string representation of the object it is assigned to.
+
+The window.name attribute is a persistent value during the existence of the page to which is assigned.
+
+An attacker can set new windows names and frames with no restriction, and they will persist during navigation on any domain.

@@ -1,0 +1,17 @@
+### How to read tables ###
+Tables contents describe output given some input.
+Headers are:
+
+  * **source**: Javascript object name
+  * **browser**: Browser Name
+  * **version**: Browser version tested
+  * **pathInfo**: characters that are not urlencoded in the pathInfo part
+  * **Search**: characters that are not urlencoded in the search part
+  * **Hash**:  characters that are not urlencoded in the hash part
+  * **output sample**: A sample of the output given by getting the property, if needed.
+
+Sometimes you'll find something like `[`A-B`]`, that means that it has to be considered the whole interval of ascii characters from A to B.
+
+The missing characters in the table elements are to be considered urlencoded, if described otherwise and excluding **/`[`a-z0-9`]`/i**
+
+Finally, some interesting characters are bold.

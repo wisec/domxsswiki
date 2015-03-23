@@ -1,0 +1,97 @@
+### The Cookies Sources ###
+
+Characters in Cookie values are invariant to the way they have been given.
+Which means that if a JavaScript application sets:
+```javascript
+
+document.cookie="PREF=a\x01b; expires=Sun, 09-Sep-2012 06:38:09 GMT; path=/; domain=.host.tld"
+```
+
+the resulting cookie will be:
+```
+"PREF=ab;"
+//for browsers that don't show the whole string, "a\x01b" 
+```
+
+For what concerns setting cookie precedence from two different hostnames sharing the same subdomain Kuza55 gives a very good compound [[4](References.md)] about browsers behavior.
+
+In particular quoted:
+```
+ Resolving Conflicts
+
+ But what if two cookies of the same name should be sent to a given page, e.g. 
+ if there is a cookie called "user" set for mail.google.com and .google.com with 
+ different values, how does the browser decide which one to send?
+ 
+ RFC 2109 states that the cookie with the more specific path attribute must be 
+ sent first, however it does not define how to deal with two cookies which have 
+ the same path (e.g. /) but different domains. If such a conflict occurs then 
+ most (all?) browsers simply send the older cookie first.
+ 
+ This means that if we want to overwrite a cookie on mail.google.com from the
+ subdomain news.google.com, and the cookie already exists, then we cannot over-write
+ a cookie with the path value of / (or whatever the path value of the existing
+ cookie is), but we can override it for every other path (up to the maximum number
+ of cookies allowed per host; 50 in IE/Firefox 30 in Opera), i.e. if we pick 50
+ (or 30 if we want to target opera) paths on mail.google.com which encompass the
+ directories and pages we want to overwrite the cookie for, we can simply set
+ 50 /30 separate cookies which are all more specific than the existing cookie.
+```
+
+
+Also Kuza55 talks about paths:
+```
+Technically the spec say that a.b.c.d cannot set a cookie for a.b.c.d or b.c.d 
+only, none of the browsers enforce this since it breaks sites. 
+Also, sites should not be able to set a cookie with a path attribute which would
+ not apply to the current page, but since path 
+boundaries are non-existant in browsers, no-one enforces this restriction either.
+```
+
+From a Javascript cookie string perspective, multiple cookies with same name are
+returned.
+
+Which means that given two hosts with same domain:
+```
+Time t - From: vi.ct.im/path/to/page/
+document.cookie="SESSION=TRUESESSION; path=/";
+
+Time t+1 - From: v2.ct.im/another/path/to/a/page/
+document.cookie="SESSION=FAKESESSION; path=/path/to/page; domain=.ct.im"
+
+Time t+2 - From: vi.ct.im/path/to/page/
+document.cookie
+returns 
+"SESSION=FAKESESSION; SESSION=TRUESESSION;"
+```
+
+Usually getCookie functions from javaScript get the first occurrence of the cookie name, so, in this very case, the FAKESESSION value will be returned.
+```
+getCookie = function (name) {
+  var search = name + '=';
+  var returnValue = '';
+
+  if (document.cookie.length > 0) {
+    offset = document.cookie.indexOf(search);
+    if (offset != -1) {
+      offset += search.length;
+      var end = document.cookie.indexOf(';', offset);
+      if (end == -1) {
+        end = document.cookie.length;
+      }
+      returnValue = decodeURIComponent(document.cookie.substring(offset, end).replace(/\+/g, '%20'));
+    }
+  }
+
+  return returnValue;
+};
+```
+Of course if the function returns the last occurrence of the name in cookie string, the attacker will force a very generic cookie from vi2.ct.im:
+```
+  From: v2.ct.im/another/path/to/a/page/
+document.cookie="SESSION=FAKESESSION; path=/; domain=.ct.im"
+```
+
+This can be considered a case of Parameter Pollution in Cookies [[5](#References.md)].
+
+Depending on how the JavaScript application will later use specific cookie values, this manipulation can be used to inject attacker controlled inputs and use them not only for Session Fixation but also to control JavaScript flow or to perform classic DOMXss.

@@ -1,0 +1,5 @@
+## Filters ##
+
+  * escape
+  * encodeURI
+  * encodeURIComponent

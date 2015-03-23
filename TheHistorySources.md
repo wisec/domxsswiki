@@ -1,0 +1,19 @@
+### The History sources ###
+
+HTML specifies a way for web application users to directly interact with the `history` object. This object was formerly protected from read and write access from JavaScript without higher privileges.
+
+Modern user agents such as Chromium 7+, Firefox 4+ and others provide a history manipulation interface adding two new methods to the DOM [MDC Documentation](https://developer.mozilla.org/en/DOM/Manipulating_the_browser_history):
+
+  * `history.pushState()`
+  * `history.replaceState()`
+
+What makes those methods interesting in terms of DOMXSS is the fact that they - when being called correctly - have direct impact on the actual `location` object. Let's have a look at an example:
+
+```
+history.pushState({state:'object'}, '', '?javascript:alert(1)');
+alert(location.search) // alerts javascript:alert(1)
+```
+
+The `location.href` property will be affected by the method call - as well as what's visible in the user agents address bar (tested on Chromium 8 and Firefox 4). In scenarios where a script makes use of the `location` object the history manipulation interface can be a working source to fill the location properties with malicious data. Note that the `location.href` value is being reset by `history.pushState()` - but no actual redirection happens - the user agent remains on the same page from where the method call originally came.
+
+Note that the state object is a valid DOMXSS source too - in case the attacker has control over it's properties. The `window.onpopstate` event observes active history changes and receives the state object. In case the attacked application uses its contents for JavaScript execution or renders them on the website it can be used for an attack too.

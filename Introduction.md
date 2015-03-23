@@ -1,0 +1,24 @@
+# DOMXSS Wiki #
+
+The DOMXSS Wiki is a Knowledge Base for defining sources of attacker controlled inputs and sinks which potentially could introduce DOM Based XSS issues. DOMXSS first being thoroughly documented in a [paper by Amit Klein](http://www.webappsec.org/projects/articles/071105.html) in 2005 has risen in relevance over the last years - nevertheless still lacking a central place for collecting information and knowledge about it.
+
+The project aims top be this very place and to identify sources and sinks methods exposed by public, widely used javascript frameworks. The project is a work in progress and will be extended over time. Contributions are welcome.
+
+Please use the sidebar menu to navigate contents.
+
+
+This project is mainly mantained by Stefano Di Paola.
+
+Warm thanks to the following active contributors:
+
+  * Mario Heiderich
+  * Frederik Braun
+
+Feel free to mail me if you want to collaborate!
+
+---
+
+
+This project is sponsored by:
+
+[![](http://www.mindedsecurity.com/images/logo.png)](http://www.mindedsecurity.com)
