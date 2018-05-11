@@ -1,0 +1,227 @@
+
+<script>
+var statusDiv;
+var charArr = [];
+var STARTINDEX = 0;
+var MAX = 65535;
+var index = STARTINDEX;
+for (var i = index; i < MAX; i++) {
+  charArr[i] = (String.fromCharCode(i));
+}
+var behaviors = {
+  href: [],
+  search: [],
+  hash: [],
+  pathname: []
+};
+var results = {
+  href: [],
+  search: [],
+  hash: [],
+  pathname: []
+};
+
+function setBehavior(loc) {
+  behaviors.href.push(loc.href);
+  behaviors.pathname.push(loc.pathname);
+  behaviors.search.push(loc.search);
+  behaviors.hash.push(loc.hash);
+}
+
+function findChar(el, idx) {
+  if (el.indexOf((String.fromCharCode(idx))) !== -1) {
+    //      var x = ({});
+    //         el = el.replace(location.href, 'http://hostname:port');
+    //         x[idx] = el;
+
+    return el.replace(location.href, 'http://hostname:port');
+  }
+}
+
+function getCharactersMap(arr, func) {
+  return arr.map(func).filter((el, id) => {
+    if (el != undefined) {
+      return true
+    }
+  })
+}
+function showStatus(){
+  if(!statusDiv)
+    statusDiv=document.getElementById("status");
+  statusDiv.innerHTML = `<div >Checking <span>${index}</span></div>`;
+}
+function charCheck() {
+  setBehavior(myframe.location)
+  if (index < MAX) {
+    myframe.location = get_url();
+    showStatus();
+  } else {
+    console.log("Task completed, filtering out encoded chars");
+    behaviors.href = getCharactersMap(behaviors.href, findChar);
+    behaviors.pathname = getCharactersMap(behaviors.pathname, findChar);
+    behaviors.search = getCharactersMap(behaviors.search, findChar);
+    behaviors.hash = getCharactersMap(behaviors.hash, findChar);
+    var JSON_results = createJSON(behaviors);
+    table_builder(JSON_results);
+  }
+}
+
+function get_url() {
+  var charTest = charArr[index];
+
+  var url = "//" + location.host + location.pathname + "/'CHARS" + index + '/' + charTest + "CHARS'?'CHARS" + index + "&" + charTest + "=" + charTest + "CHARS'#'CHARS" + index + '&' + charTest + "=" + charTest + "CHARS'";
+
+  index++;
+  return url;
+}
+
+function createJSON(obj) {
+  var results = {
+    href: {
+      pathname: [],
+      search: [],
+      hash: []
+    },
+    pathname: [],
+    search: [],
+    hash: []
+  };
+  //results.hash = obj.hash;
+
+  obj.hash.forEach((el) => {
+    var match = el.match(/'CHARS(\d*)&(.)=(.)CHARS'/);
+    if (match)
+      results.hash[match[1]] = match[2];
+  });
+
+  //results.search = obj.search;
+  obj.search.forEach((el) => {
+    var match = el.match(/%27CHARS(\d*)&(.)=(.)CHARS%27/);
+    if (match)
+      results.search[match[1]] = match[2];
+  });
+
+  //results.pathname = obj.pathname;
+  obj.pathname.forEach((el) => {
+    var match = el.match(/'CHARS(\d*)\/(.)CHARS'/);
+    if (match)
+      results.pathname[match[1]] = match[2];
+  });
+
+  //results.href = obj.href;
+  obj.href.forEach((el) => {
+    var match = el.match(/'CHARS(\d+)\/(.*)CHARS'\?%27CHARS(\d*)&(.*)=(.*)CHARS%27#'CHARS(\d*)&(.*)=(.*)CHARS'/);
+    if (match) {
+      var path_charCode = match[1];
+      var path_char = match[2];
+      results.href.pathname[path_charCode] = path_char;
+
+      var search_charCode = match[3];
+      var search_char1 = match[4];
+      var search_char2 = match[5];
+      results.href.search[search_charCode] = search_char1;
+
+      var hash_charCode = match[6];
+      var hash_char1 = match[7];
+      var hash_char2 = match[8];
+      results.href.hash[hash_charCode] = hash_char1;
+
+
+    } else {
+      console.log(el);
+    }
+  });
+  return results;
+}
+
+function checker() {
+  STARTINDEX = parseInt(document.getElementById('from').value);
+  MAX = parseInt(document.getElementById('to').value);
+  document.getElementById('frame').addEventListener('load', charCheck);
+  document.getElementById('frame').addEventListener('error', charCheck);
+  try {
+    var new_url = get_url();
+    myframe.location = new_url;
+  } catch (e) {
+    setBehavior(myframe.location);
+    myframe.location = get_url();
+  }
+}
+
+function table_builder(data) {
+  var table = document.querySelector("tbody");
+  for (var i = STARTINDEX; i < MAX; i++) {
+    var row = table.insertRow();
+    // <th>Characters</th>
+    el = row.insertCell();
+    el.textContent = `${i} ('${charArr[i]}')`;
+    // location
+    // <th>Pathname</th>
+    el = row.insertCell();
+    el.innerHTML = data.href.pathname[i] === charArr[i]? "<span class='decoded'>DECODED</span>": "<span class='encoded'>ENCODED</span>";
+    // location
+    // <th>Search</th>
+    el = row.insertCell();
+    el.innerHTML = data.href.search[i] === charArr[i]? "<span class='decoded'>DECODED</span>": "<span class='encoded'>ENCODED</span>";
+    // location
+    // <th>Hash</th>
+    el = row.insertCell();
+    el.innerHTML = data.href.hash[i]=== charArr[i]? "<span class='decoded'>DECODED</span>": "<span class='encoded'>ENCODED</span>";
+
+    // <th>Pathname</th>
+    el = row.insertCell();
+    el.innerHTML = data.pathname[i]=== charArr[i]? "<span class='decoded'>DECODED</span>": "<span class='encoded'>ENCODED</span>";
+    //  <th>Search</th>
+    el = row.insertCell();
+    el.innerHTML = data.search[i]=== charArr[i]? "<span class='decoded'>DECODED</span>": "<span class='encoded'>ENCODED</span>";
+    //  <th>Hash</th>
+    el = row.insertCell();
+    el.innerHTML = data.hash[i]=== charArr[i]? "<span class='decoded'>DECODED</span>": "<span class='encoded'>ENCODED</span>";
+  }
+
+}
+
+//window.addEventListener("load", table_builder);
+</script>
+From: <input id="from" autofocus value="0"> To: <input  id="to" value="65535">
+<button onclick="checker()">Test on your browser</button>
+<div id="status"></div>
+<div id="results">
+<style>
+th {
+  border: black solid 1pt;
+  padding: 10px;
+  margin-left: 110px;
+}
+td {
+  border-bottom: black solid 1pt;
+}
+.decoded {
+  color:red;
+}
+.encoded {
+  color:green;
+}
+</style>
+<table>
+<thead>
+<tr >
+  <th id="heads" colspan="1"></th>
+  <th id="" colspan="3">Location</th>
+  <th id="heads" colspan="3"></th>
+</tr>
+<tr>
+  <th>Characters</th>
+  <th>Pathname</th>
+  <th>Search</th>
+  <th>Hash</th>
+  <th>Pathname</th>
+  <th>Search</th>
+  <th>Hash</th>
+ </tr>
+ </thead>
+<tbody>
+</tbody>
+</table>
+</div>
+<iframe id='frame' name="myframe" style="display:none" src=""></frame>
