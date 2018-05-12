@@ -14,12 +14,6 @@ var behaviors = {
   hash: [],
   pathname: []
 };
-var results = {
-  href: [],
-  search: [],
-  hash: [],
-  pathname: []
-};
 
 function setBehavior(loc) {
   behaviors.href.push(loc.href);
@@ -30,10 +24,6 @@ function setBehavior(loc) {
 
 function findChar(el, idx) {
   if (el.indexOf((String.fromCharCode(idx))) !== -1) {
-    //      var x = ({});
-    //         el = el.replace(location.href, 'http://hostname:port');
-    //         x[idx] = el;
-
     return el.replace(location.href, 'http://hostname:port');
   }
 }
@@ -45,6 +35,7 @@ function getCharactersMap(arr, func) {
     }
   })
 }
+
 function showStatus(){
   if(!statusDiv)
     statusDiv=document.getElementById("status");
@@ -137,11 +128,13 @@ function createJSON(obj) {
 function checker() {
   STARTINDEX = parseInt(document.getElementById('from').value);
   MAX = parseInt(document.getElementById('to').value);
-  document.getElementById('frame').addEventListener('load', charCheck);
-  document.getElementById('frame').addEventListener('error', charCheck);
+  var frame = document.getElementById('frame');
+  frame.addEventListener('load', charCheck);
+  frame.addEventListener('error', charCheck);
   try {
     var new_url = get_url();
     myframe.location = new_url;
+    myframe.stop();
   } catch (e) {
     setBehavior(myframe.location);
     myframe.location = get_url();
@@ -188,19 +181,24 @@ From: <input id="from" autofocus value="0"> To: <input  id="to" value="127">
 <div id="status"></div>
 <div id="results">
 <style>
+
 th {
   border: black solid 1pt;
   padding: 10px;
   margin-left: 110px;
 }
-td {
-  border-bottom: black solid 1pt;
-}
+
+tr:nth-child(even) {background: #CCC}
+tr:nth-child(odd) {background: #FFF}
+
+
 .decoded {
-  color:red;
+  background-color:red;
+  color: white;
 }
 .encoded {
-  color:green;
+  background-color:green;
+  color: white
 }
 </style>
 <table>
